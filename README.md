@@ -7,7 +7,7 @@
 > for development in local
 
 ```bash
-php -S localhost:8000 -t public
+composer run start
 ```
 
 # Closing 🏁
