@@ -1,6 +1,12 @@
 <?php
 
-namespace App\Config;
+namespace src\app\Config;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+use mysqli;
+use Dotenv\Dotenv;
+
 /** 
  * --------------------------------------------------------------------------
  * Database Configuration
@@ -8,20 +14,20 @@ namespace App\Config;
  */
 class Database {
     /**
-    * --------------------------------------------------------------------------
-    * Database Connections
-    * --------------------------------------------------------------------------
-    */
+     * --------------------------------------------------------------------------
+     * Database Connections
+     * --------------------------------------------------------------------------
+     */
     public static function connection(string $connectionName = 'mysql'): array
     {
-        $dotenv = Dotenv::createImmutable(__DIR__ . '');
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
         $dotenv->load();
 
-        $host = getenv('DB_HOST');
-        $port = getenv('DB_PORT');
-        $database = getenv('DB_DATABASE');
-        $username = getenv('DB_USERNAME');
-        $password = getenv('DB_PASSWORD');
+        $host       = $_ENV['DB_HOST'] ?? '127.0.0.1';
+        $port       = $_ENV['DB_PORT'] ?? '3306';
+        $database   = $_ENV['DB_DATABASE'] ?? 'example';
+        $username   = $_ENV['DB_USERNAME'] ?? 'root';
+        $password   = $_ENV['DB_PASSWORD'] ?? '';
 
         if (!$host || !$port || !$database || !$username) {
             throw new \RuntimeException('Missing required database configuration.');
