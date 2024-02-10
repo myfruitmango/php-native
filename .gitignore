@@ -5,3 +5,5 @@
 .env.production
 # Hidden vendor
 vendor/*
+# Hidden composer.lock
+composer.lock
