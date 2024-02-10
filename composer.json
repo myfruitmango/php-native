@@ -1,4 +1,7 @@
 {
+  "type": "project",
+  "description": "The skeleton application for the duckXmango.",
+  "version": "1.0.0",
   "require": {
     "vlucas/phpdotenv": "^5.6"
   }
